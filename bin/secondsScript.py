@@ -23,9 +23,7 @@ counter = 0
 while True:
     out = "Harrison: " + str(date.today()) + " " + str(datetime.now().strftime("%H:%M:%S")) + " #" + str(counter)
     print(out)
-    out_file.write(out + '\n')
-    # out_file.flush()
-    # flush = true print instantly
+    out_file.write(out + '\n', flush=True)
     counter += 1
     time.sleep(1)
     
