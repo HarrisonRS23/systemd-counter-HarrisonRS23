@@ -1,14 +1,12 @@
 import time
 import signal
 import sys
-import os
 from datetime import date, datetime
 
 def term_handler(signum, frame):
     out = "Harrison: " + str(date.today()) + " " + str(datetime.now().strftime("%H:%M:%S")) + " Recieved SIGTERM, exiting..."
     print (out, flush=True)
-    out_file.write(out + '\n')
-    out_file.flush()
+    out_file.write(out + '\n', flush=True)
     out_file.close()
     sys.exit()
 
