@@ -5,9 +5,11 @@ build:
 	sudo cp bin/counter.service /lib/systemd/system/counter.service
 	sudo useradd --system user
 	sudo service counter start
+	echo "Building deb..."
 
 test:
 	echo "Testing..."
+	python3 bin/test.py
 
 clean: 
 	echo "Cleaning..."
@@ -16,7 +18,7 @@ clean:
 	-@if [ -f /lib/systemd/system/counter.service ]; then sudo rm /lib/systemd/system/counter.service; else echo "File /lib/systemd/system/counter.service does not exist"; fi
 	-sudo service counter stop || echo "Service counter is not running"
 	-sudo systemctl daemon-reload
-	-sudo userdel user
+	-@if grep -q "^user:" /etc/passwd; then sudo groupdel user; else echo "user does not exist"; fi
 
 run:
 	echo "Running..."
@@ -24,6 +26,7 @@ run:
 
 build-deb:
 	echo "Building deb..."
-
+	./debBuild.sh
+	
 lint-deb:
 	echo "Linting deb..."
