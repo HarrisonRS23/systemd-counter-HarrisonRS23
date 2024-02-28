@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Stop the counter service
+echo "stopping service"
+sudo service counter stop
+
+# Update systemd to prevent the counter service from starting on the next reboot
+systemctl disable counter.service
+
+# Remove the counter service
+rm /etc/systemd/system/counter.service
+
+make clean
+
+# Remove the counter system user account
+if id -u counter > /dev/null 2>&1; then
+    userdel counter
+fi
