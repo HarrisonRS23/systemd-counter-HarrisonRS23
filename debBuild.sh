@@ -26,6 +26,9 @@ echo "Copy postinst and prerm to the temp debian"
 cp src/DEBIAN/postinst $TEMP_DIR/DEBIAN/
 cp src/DEBIAN/prerm $TEMP_DIR/DEBIAN/
 
+cp bin/counter.service $TEMP_DIR/lib/systemd/system/
+
+
 
 echo "Building deb file"
 dpkg-deb --root-owner-group --build $TEMP_DIR

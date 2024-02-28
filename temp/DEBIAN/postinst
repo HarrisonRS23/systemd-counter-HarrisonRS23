@@ -1,22 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "Starting Deb package Build"
 
-# This script is executed after the package is installed
-
-# Enable the counter service
-systemctl enable counter.service
-
-# Create the counter system user if it doesn't exist
+# Check if user already exists
 if ! id -u user > /dev/null 2>&1; then
     useradd --system user
 fi
 
-sudo systemctl start counter.service
-sudo systemctl daemon-reload
+systemctl enable counter.service
+systemctl start counter
+systemctl status counter
+systemctl daemon-reload
 
-# Start the counter service
-# echo "starting service" 
-# sudo service counter start
-
-
+echo "Deb package Build completed"

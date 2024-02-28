@@ -1,20 +1,34 @@
-#!/bin/bash
+#!/bin/sh
 
-# Stop the counter service
-echo "stopping service"
-sudo service counter stop
+echo "Stopping service"
+if service counter status >/dev/null 2>&1; then
+    service counter stop
+fi
 
-# Update systemd to prevent the counter service from starting on the next reboot
 systemctl disable counter.service
 
-# Remove the counter service
-rm /etc/systemd/system/counter.service
+if [ -f /etc/systemd/system/counter.service ]; then
+    rm /etc/systemd/system/counter.service
+fi
 
-# Remove the counter system user account
 if id -u counter > /dev/null 2>&1; then
     userdel counter
 fi
 
-cd /home/hsheldon/Documents/vs code/systemd-counter-HarrisonRS23/Makefile && make clean
+if [ -f /tmp/currentCount.out ]; then
+    rm /tmp/currentCount.out
+fi
 
+if [ -f /usr/local/bin/counter.py ]; then
+    rm /usr/local/bin/counter.py
+fi
 
+if [ -f /lib/systemd/system/counter.service ]; then
+    rm /lib/systemd/system/counter.service
+fi
+
+if id -u user > /dev/null 2>&1; then
+    userdel user
+fi
+
+systemctl daemon-reload
