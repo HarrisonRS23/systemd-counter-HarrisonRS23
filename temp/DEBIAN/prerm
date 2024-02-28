@@ -10,9 +10,11 @@ systemctl disable counter.service
 # Remove the counter service
 rm /etc/systemd/system/counter.service
 
-make clean
-
 # Remove the counter system user account
 if id -u counter > /dev/null 2>&1; then
     userdel counter
 fi
+
+cd /home/hsheldon/Documents/vs code/systemd-counter-HarrisonRS23/Makefile && make clean
+
+
