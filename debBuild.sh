@@ -25,10 +25,12 @@ cp src/counter.conf $TEMP_DIR/etc/
 echo "Copy postinst and prerm to the temp debian"
 cp src/DEBIAN/postinst $TEMP_DIR/DEBIAN/
 cp src/DEBIAN/prerm $TEMP_DIR/DEBIAN/
+cp src/DEBIAN/preinst $TEMP_DIR/DEBIAN/
+chmod 755 $TEMP_DIR/DEBIAN/preinst
+chmod 755 $TEMP_DIR/DEBIAN/postinst
+chmod 755 $TEMP_DIR/DEBIAN/prerm
 
-cp bin/counter.service $TEMP_DIR/lib/systemd/system/
-
-
+cp src/counter.service $TEMP_DIR/usr/bin/
 
 echo "Building deb file"
 dpkg-deb --root-owner-group --build $TEMP_DIR

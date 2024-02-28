@@ -5,7 +5,11 @@ if service counter status >/dev/null 2>&1; then
     service counter stop
 fi
 
-systemctl disable counter.service
+# Check if counter.service already exists
+if [ -f /etc/systemd/system/counter.service ]; then
+    systemctl stop counter.service
+    systemctl disable counter.service
+fi
 
 if [ -f /etc/systemd/system/counter.service ]; then
     rm /etc/systemd/system/counter.service
