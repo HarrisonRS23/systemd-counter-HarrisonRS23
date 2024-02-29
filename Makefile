@@ -1,12 +1,9 @@
 build:
 	echo "Building..."
-	sudo service counter start 
-	sudo systemctl daemon-reload
-	sudo service counter status
 
 run:
 	echo "Running..."
-	sudo service counter status
+	python3 bin/counter.py
 
 test:
 	echo "Testing..."
@@ -18,7 +15,6 @@ clean:
 	
 build-deb:
 	echo "Building deb..."
-	-@if grep -q "^user:" /etc/passwd; then echo "make already ran"; else make build; fi
 	./debBuild.sh
 	
 lint-deb:

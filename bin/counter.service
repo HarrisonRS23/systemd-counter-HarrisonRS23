@@ -2,7 +2,7 @@
 Description=counter service
 
 [Service]
-User=user
+User=counter
 WorkingDirectory=/usr/local/bin
 ExecStart=/usr/bin/python3 /usr/local/bin/counter.py
 # Optional items below

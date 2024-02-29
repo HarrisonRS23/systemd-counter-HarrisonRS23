@@ -1,9 +1,6 @@
 #!/bin/sh
 
 echo "Stopping service"
-if service counter status >/dev/null 2>&1; then
-    service counter stop
-fi
 
 # Check if counter.service already exists
 if [ -f /etc/systemd/system/counter.service ]; then
@@ -11,28 +8,12 @@ if [ -f /etc/systemd/system/counter.service ]; then
     systemctl disable counter.service
 fi
 
-if [ -f /etc/systemd/system/counter.service ]; then
-    rm /etc/systemd/system/counter.service
-fi
-
-if id -u counter > /dev/null 2>&1; then
-    userdel counter
-fi
+echo "Removing..."
 
 if [ -f /tmp/currentCount.out ]; then
     rm /tmp/currentCount.out
-fi
-
-if [ -f /usr/local/bin/counter.py ]; then
-    rm /usr/local/bin/counter.py
-fi
-
-if [ -f /lib/systemd/system/counter.service ]; then
-    rm /lib/systemd/system/counter.service
-fi
-
-if id -u user > /dev/null 2>&1; then
-    userdel user
+else
+    echo "File /tmp/currentCount.out does not exist"
 fi
 
 systemctl daemon-reload

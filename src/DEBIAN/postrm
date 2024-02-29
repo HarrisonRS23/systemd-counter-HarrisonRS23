@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Starting postrm..."
+
+echo "removing user"
+
+if grep -q "^user:" /etc/passwd; then
+    userdel user
+else
+    echo "user does not exist"
+fi
