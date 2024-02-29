@@ -1,5 +1,6 @@
 build:
 	echo "Building..."
+	echo "nothing to build"
 
 run:
 	echo "Running..."
