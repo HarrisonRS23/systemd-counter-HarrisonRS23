@@ -13,7 +13,7 @@ test:
 clean: 
 	echo "Cleaning..."
 	sudo rm -f /usr/local/bin/counter.py
-	rm -rf counter.deb
+	rm -rf counter-v2.0.0.deb
 	rm -rf temp
 	
 build-deb:
