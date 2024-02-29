@@ -13,6 +13,8 @@ test:
 clean: 
 	echo "Cleaning..."
 	sudo rm -f /usr/local/bin/counter.py
+	rm -rf counter.deb
+	rm -rf temp
 	
 build-deb:
 	echo "Building deb..."
@@ -21,8 +23,3 @@ build-deb:
 lint-deb:
 	echo "Linting deb..."
 	lintian counter.deb
-
-clean-deb:
-	echo "Cleaning deb..."
-	rm -rf counter.deb
-	rm -rf temp
