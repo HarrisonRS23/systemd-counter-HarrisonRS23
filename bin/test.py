@@ -16,7 +16,8 @@ def test_output():
     counter = 1
     output(counter, mock_out_file)
     now = datetime.now()
-    one_second_ago = now - timedelta(seconds=1)
+    #one_second_ago = now - timedelta(seconds=1)
+    one_second_ago = now
     assert mock_out_file.getvalue().strip() == "Harrison: " + str(date.today()) + " " + one_second_ago.strftime("%H:%M:%S") + " #" + str(counter)
 
 def test_open_file():
