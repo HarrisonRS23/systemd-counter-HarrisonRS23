@@ -22,5 +22,5 @@ build-deb:
 	./debBuild.sh
 	
 lint-deb:
-	echo "Linting deb..."
-	lintian counter.deb
+	echo "Linting deb..."	
+	-lintian counter-v2.0.0.deb
