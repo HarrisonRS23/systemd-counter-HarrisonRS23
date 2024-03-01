@@ -8,7 +8,6 @@ run:
 
 test:
 	echo "Testing..."
-	pip3 install pytest
 	pytest bin/test.py
 
 clean: 
@@ -23,5 +22,4 @@ build-deb:
 	
 lint-deb:
 	echo "Linting deb..."	
-	sudo apt install lintian
 	-lintian counter-v2.0.0.deb
