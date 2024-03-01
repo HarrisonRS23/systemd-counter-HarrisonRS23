@@ -19,4 +19,7 @@ jobs:
       - name: Test Project
         run: |
           make test
+      - name: Build Debian File
+        run: |
+          make build-deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
