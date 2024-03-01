@@ -26,5 +26,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: deb artifact
-          path: counter.deb
+          path: counter-v2.0.0.deb
+      - name: Run lint deb
+        run: |
+          make lint-deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
