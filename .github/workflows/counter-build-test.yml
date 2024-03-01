@@ -25,6 +25,6 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: counter.deb
-          # path: path/to/artifact
+          name: deb artifact
+          path: counter.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
