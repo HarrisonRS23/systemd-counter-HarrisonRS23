@@ -8,6 +8,7 @@ run:
 
 test:
 	echo "Testing..."
+	pip3 install pytest
 	pytest bin/test.py
 
 clean: 
