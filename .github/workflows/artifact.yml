@@ -1,0 +1,21 @@
+name: counter-build-test
+run-name: ${{ github.actor }} is downloading an artifact 🚀
+on: [push]
+jobs:
+  build:
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Dependancies 
+        run: |
+           sudo apt install lintian
+           pip3 install pytest
+      - name: Build Debian File
+        run: |
+          make build-deb
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb artifact
+          path: counter-v2.0.0.deb
+      - run: echo "🍏 This job's status is ${{ job.status }}."
