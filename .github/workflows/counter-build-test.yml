@@ -50,6 +50,10 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
         
+      - name: Build Debian File
+        run: |
+          make build-deb
+
       - name: Run lint deb
         run: |
           make lint-deb
