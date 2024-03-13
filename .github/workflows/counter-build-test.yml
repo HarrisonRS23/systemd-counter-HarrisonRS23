@@ -8,10 +8,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Download Dependancies 
-        run: |
-           sudo apt install lintian
-           pip3 install pytest
       - name: Build Project
         run: |
           make build
@@ -20,10 +16,9 @@ jobs:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
-      - name: Download Dependancies 
-        run: |
-           sudo apt install lintian
-           pip3 install pytest
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - name: Build Debian File
         run: |
           make build-deb
@@ -37,9 +32,11 @@ jobs:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - name: Download Dependancies 
         run: |
-           sudo apt install lintian
            pip3 install pytest
 
       - name: Test Project
@@ -50,6 +47,9 @@ jobs:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
       - name: Run lint deb
         run: |
           make lint-deb
