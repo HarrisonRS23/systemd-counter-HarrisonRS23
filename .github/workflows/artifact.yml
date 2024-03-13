@@ -1,4 +1,4 @@
-name: counter-build-test
+name: artifact-download
 run-name: ${{ github.actor }} is downloading an artifact 🚀
 on: [push]
 jobs:

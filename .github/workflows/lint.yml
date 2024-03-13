@@ -1,4 +1,4 @@
-name: counter-build-test
+name: lint
 run-name: ${{ github.actor }} is linting the deb file 🚀
 on: [push]
 jobs:

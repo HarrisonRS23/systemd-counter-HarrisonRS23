@@ -1,4 +1,4 @@
-name: counter-build-test
+name: build
 run-name: ${{ github.actor }} is running the build GitHub Actions 🚀
 on: [push]
 jobs:
