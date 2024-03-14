@@ -50,7 +50,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Run lint deb
-        run: |
+
+        uses: actions/download-artifact@v4
+        with:
+          name: deb artifact
+          path: counter-v2.0.0.deb
+          
+      - run: |
           make build-deb
           make lint-deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
