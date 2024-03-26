@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
+    runs-on: self-hosted, linux, CPSC334
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -14,7 +14,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   download-artifact:
     timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
+    runs-on: self-hosted, linux, CPSC334
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   test:
     timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
+    runs-on: self-hosted, linux, CPSC334
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
