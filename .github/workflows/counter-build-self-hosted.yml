@@ -37,7 +37,7 @@ jobs:
 
       - name: Download Dependancies 
         run: |
-           pip3 install pytest
+           echo "pip3 install pytest"
 
       - name: Test Project
         run: |
@@ -50,7 +50,7 @@ jobs:
 
       - name: Download Dependancies 
         run: |
-           sudo apt install lintian
+           echo "sudo apt install lintian"
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: lint deb
