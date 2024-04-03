@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
+    runs-on: [self-hosted, linux, cpsc334]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
