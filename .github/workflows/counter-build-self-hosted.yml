@@ -1,4 +1,4 @@
-name: counter-build-test
+name: self hosted runner
 run-name: ${{ github.actor }} is running the build GitHub Actions 🚀
 on: [push]
 jobs:
@@ -37,7 +37,7 @@ jobs:
 
       - name: Download Dependancies 
         run: |
-           echo "pip3 install pytest"
+           pip3 install pytest
 
       - name: Test Project
         run: |
@@ -50,7 +50,7 @@ jobs:
 
       - name: Download Dependancies 
         run: |
-           echo "sudo apt install lintian"
+           sudo apt install lintian
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: lint deb
