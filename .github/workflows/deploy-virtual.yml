@@ -54,8 +54,9 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
             cd ~/package/
-            dpkg -i counter-v2.0.0.deb
+            sudo -S dpkg -i counter-v2.0.0.deb
