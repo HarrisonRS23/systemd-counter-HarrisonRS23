@@ -29,20 +29,6 @@ jobs:
           name: deb artifact
           path: counter-v2.0.0.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
-
-  copy:
-    name: copy files using ssh
-    runs-on: [self-hosted, linux, cpsc334]
-    steps:
-      - name: copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.KEY }}
-          source: counter-v2.0.0.deb
-          target: test
       
   ssh:
 
@@ -59,4 +45,17 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/package/
-            sudo -S dpkg -i counter-v2.0.0.deb
+            echo ${{ secrets.PASSWORD }} | sudo -S dpkg -i counter-v2.0.0.deb
+  copy:
+      name: copy files using ssh
+      runs-on: [self-hosted, linux, cpsc334]
+      steps:
+        - name: copy file via ssh key
+          uses: appleboy/scp-action@v0.1.7
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            port: ${{ secrets.PORT }}
+            key: ${{ secrets.KEY }}
+            source: counter-v2.0.0.deb
+            target: test
