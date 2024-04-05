@@ -29,20 +29,6 @@ jobs:
           name: deb artifact
           path: counter-v2.0.0.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      
-  ssh:
-
-      timeout-minutes: 2
-      runs-on: [self-hosted, linux, cpsc334]
-      steps:
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: whoami
 
   copy:
     name: copy files using ssh
@@ -57,6 +43,23 @@ jobs:
           key: ${{ secrets.KEY }}
           source: counter-v2.0.0.deb
           target: test
+      
+  ssh:
+
+      timeout-minutes: 2
+      runs-on: [self-hosted, linux, cpsc334]
+      steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/package/
+            sudo dpkg -i counter-v2.0.0.deb
+  
         
   test:
     timeout-minutes: 2
