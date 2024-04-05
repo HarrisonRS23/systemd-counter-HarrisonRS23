@@ -46,20 +46,18 @@ jobs:
 
   copy:
     name: copy files using ssh
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, cpsc334]
     steps:
-    - uses: actions/checkout@v4
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: counter-v2.0.0.deb
-        target: your_server_target_folder_path
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          source: counter-v2.0.0.deb
+          target: test
         
-  
   test:
     timeout-minutes: 2
     runs-on: [self-hosted, linux, CPSC334]
