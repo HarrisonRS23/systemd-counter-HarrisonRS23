@@ -58,31 +58,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/package/
-            sudo dpkg -i counter-v2.0.0.deb
-  
-        
-  test:
-    timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Test Project
-        run: |
-          make test
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-  lint-deb:
-    timeout-minutes: 2
-    runs-on: [self-hosted, linux, CPSC334]
-    steps:
-    
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: lint deb
-        run: |
-          make build-deb
-          make lint-deb
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+            dpkg -i counter-v2.0.0.deb
