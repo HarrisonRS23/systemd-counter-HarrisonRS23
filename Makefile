@@ -26,4 +26,6 @@ lint-deb:
 docker-image:
 	echo "Making docker image"
 	docker build -t counter:latest .
-	docker run --rm -it counter:latest
+docker-run:
+	echo "mounting and running image"
+	docker run --rm --mount type=bind,source=/tmp,target=/tmp counter:latest
