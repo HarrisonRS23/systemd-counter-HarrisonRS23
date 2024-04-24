@@ -42,8 +42,8 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          sudo apt update
-          sudo apt install -y python3-pytest
+          apt update
+          apt install -y python3-pytest
 
       - name: Test Project
         run: |
@@ -60,8 +60,8 @@ jobs:
 
       - name: Install linting dependencies
         run: |
-          sudo apt update
-          sudo apt install -y lintian
+          apt update
+          apt install -y lintian
         
       - name: lint deb
         run: |
