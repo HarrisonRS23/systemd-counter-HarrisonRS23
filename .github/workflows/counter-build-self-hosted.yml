@@ -5,6 +5,7 @@ jobs:
   build:
     timeout-minutes: 2
     runs-on: [self-hosted, linux, cpsc334]
+    container: ubuntu:latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -15,6 +16,7 @@ jobs:
   download-artifact:
     timeout-minutes: 2
     runs-on: [self-hosted, linux, CPSC334]
+    container: ubuntu:latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -31,6 +33,7 @@ jobs:
   test:
     timeout-minutes: 2
     runs-on: [self-hosted, linux, CPSC334]
+    container: ubuntu:latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -44,6 +47,7 @@ jobs:
   lint-deb:
     timeout-minutes: 2
     runs-on: [self-hosted, linux, CPSC334]
+    container: ubuntu:latest
     steps:
     
       - name: Check out repository code
