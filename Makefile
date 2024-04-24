@@ -23,6 +23,7 @@ build-deb:
 lint-deb:
 	echo "Linting deb..."	
 	-lintian counter-v2.0.0.deb
-make docker-image
+docker-image:
 	echo "Making docker image"
+	docker build -t counter:latest .
 	docker run --rm counter:latest
