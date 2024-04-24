@@ -3,6 +3,8 @@
 FROM ubuntu:latest
 WORKDIR /app
 COPY . .
+COPY startCounter.sh /startCounter.sh
+RUN chmod +x /startCounter.sh
 #RUN yarn install --requirements
-#CMD ["node", "src/index.js"]
+CMD ["/startcounter.sh"]
 # EXPOSE 3000
