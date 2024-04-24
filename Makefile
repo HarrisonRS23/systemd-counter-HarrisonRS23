@@ -26,4 +26,4 @@ lint-deb:
 docker-image:
 	echo "Making docker image"
 	docker build -t counter:latest .
-	docker run --rm counter:latest
+	docker run --rm -it counter:latest
