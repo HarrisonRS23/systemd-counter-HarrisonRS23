@@ -40,6 +40,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install test dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python3-pytest
+
       - name: Test Project
         run: |
           make test
@@ -52,6 +57,12 @@ jobs:
     
       - name: Check out repository code
         uses: actions/checkout@v4
+
+      - name: Install linting dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y lintian
+        
       - name: lint deb
         run: |
           make build-deb
