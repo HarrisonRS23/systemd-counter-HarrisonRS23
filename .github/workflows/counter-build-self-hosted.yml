@@ -1,5 +1,5 @@
 name: self hosted runner
-run-name: ${{ github.actor }} is running the build GitHub Actions 🚀
+run-name: ${{ github.actor }} is running the actions on ubuntu container
 on: [push]
 jobs:
   build:
