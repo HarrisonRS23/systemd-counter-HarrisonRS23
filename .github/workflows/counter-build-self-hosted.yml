@@ -31,7 +31,7 @@ jobs:
           path: counter-v2.0.0.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
   test:
-    timeout-minutes: 2
+    timeout-minutes: 5
     runs-on: [self-hosted, linux, CPSC334]
     container: ubuntu:latest
     steps:
@@ -42,14 +42,15 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          apt install -y python3-pytest
+          apt-get update -y
+          apt-get install python3-pytest
 
       - name: Test Project
         run: |
           pytest bin/test.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
   lint-deb:
-    timeout-minutes: 2
+    timeout-minutes: 5
     runs-on: [self-hosted, linux, CPSC334]
     container: ubuntu:latest
     steps:
@@ -59,7 +60,8 @@ jobs:
 
       - name: Install linting dependencies
         run: |
-          apt install -y lintian
+          apt-get update -y
+          apt-get install -y lintian
         
       - name: lint deb
         run: |
