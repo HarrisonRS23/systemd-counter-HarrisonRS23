@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build Project
         run: |
-          make build
+          echo "nothing to build"
       - run: echo "🍏 This job's status is ${{ job.status }}."
   download-artifact:
     timeout-minutes: 2
@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Debian File
         run: |
-          make build-deb
+          ./debBuild.sh
       - name: Archive build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -47,7 +47,7 @@ jobs:
 
       - name: Test Project
         run: |
-          make test
+          pytest bin/test.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
   lint-deb:
     timeout-minutes: 2
@@ -65,6 +65,6 @@ jobs:
         
       - name: lint deb
         run: |
-          make build-deb
-          make lint-deb
+          ./debBuild.sh
+          -lintian counter-v2.0.0.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
