@@ -43,7 +43,7 @@ jobs:
       - name: Install test dependencies
         run: |
           apt-get update -y
-          apt-get install python3-pytest
+          apt-get install -y python3-pytest
 
       - name: Test Project
         run: |
@@ -66,5 +66,5 @@ jobs:
       - name: lint deb
         run: |
           ./debBuild.sh
-          -lintian counter-v2.0.0.deb
+          lintian -i counter-v2.0.0.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
